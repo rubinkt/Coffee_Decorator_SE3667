@@ -19,6 +19,14 @@ public abstract class Beverage {
     return description;
   }
 
+  public double getBaseCost() {
+    return baseCost;
+  }
+
+  public Size size() {
+    return size;
+  }
+
   public double cost() {
     double totalCost = baseCost;
     switch (size) {
