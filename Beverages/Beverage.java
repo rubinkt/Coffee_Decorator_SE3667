@@ -1,7 +1,9 @@
 package Beverages;
 
+import java.lang.Math;
+
 public abstract class Beverage {
-  public enum Size {SMALL, MEDIUM, LARGE}
+  public static enum Size {SMALL, MEDIUM, LARGE}
 
   private String description;
   private double baseCost;
@@ -30,6 +32,7 @@ public abstract class Beverage {
         totalCost *= 1.4;
         break;
     }
+    totalCost = Math.round(totalCost * 100.0) / 100.0;
 
     return totalCost;
   }
