@@ -1,6 +1,7 @@
 package Decorators;
 
 import Beverages.Beverage;
+
 import java.lang.Math;
 
 public abstract class BeverageDecorator extends Beverage {
@@ -17,12 +18,24 @@ public abstract class BeverageDecorator extends Beverage {
 
     @Override
     public String getCalcString() {
-        // TODO: implement this to make a string that looks like the calculation thing on project description 
-        return beverage.getCalcString() + "\n" + "blah blah";
+        double multiplier = 1.0;
+        switch (beverage.getSize()) {
+        case SMALL:
+            // It's already 1.0
+            break;
+        case MEDIUM:
+            multiplier = 1.2;
+            break;
+        case LARGE:
+            multiplier = 1.4;
+            break;
+        }
+        String line = String.format("%1$-16s $%2$-6.2f X %3$-6.2f = $%4$-7.2f", componentName, addedCost, multiplier, componentCost());
+        return beverage.getCalcString() + "\n" + line;
     }
 
-    @Override
-    public double cost() {
+
+    public double componentCost() {
         double sizeAdjustedCost = addedCost;
         switch (beverage.getSize()) {
             case SMALL:
@@ -36,7 +49,12 @@ public abstract class BeverageDecorator extends Beverage {
                 break;
         }
         sizeAdjustedCost = Math.round(sizeAdjustedCost * 100.0) / 100.0;
+        return sizeAdjustedCost;
+    }
 
+    @Override
+    public double cost() {
+        double sizeAdjustedCost = componentCost();
         return Math.round((beverage.cost() + sizeAdjustedCost) * 100.0) / 100.0;
     }
 

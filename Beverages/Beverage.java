@@ -34,8 +34,20 @@ public abstract class Beverage {
   }
 
   public String getCalcString() {
-    // TODO: implement this to make a string that looks like the calculation thing on project description 
-    return "placeholder base beverage text";
+    double multiplier = 1.0;
+    switch (size) {
+      case SMALL:
+        // It's already 1.0
+        break;
+      case MEDIUM:
+        multiplier = 1.2;
+        break;
+      case LARGE:
+        multiplier = 1.4;
+        break;
+    }
+    String line = String.format("%1$-16s $%2$-6.2f X %3$-6.2f = $%4$-7.2f", name, baseCost, multiplier, cost());
+    return line;
   }
 
   public String getName() {
