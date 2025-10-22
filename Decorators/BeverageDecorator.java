@@ -11,6 +11,7 @@ public abstract class BeverageDecorator extends Beverage {
     public BeverageDecorator(Beverage beverage, String componentName, double addedCost) {
         super(beverage.getName() + ", " + componentName, beverage.getBaseCost(), beverage.getSize());
         this.beverage = beverage;
+        this.componentName = componentName;
         this.addedCost = Math.round(addedCost * 100.0) / 100.0;
     }
 
