@@ -5,26 +5,14 @@ import java.lang.Math;
 public abstract class Beverage {
   public static enum Size {SMALL, MEDIUM, LARGE}
 
-  private String description;
+  private String name;
   private double baseCost;
   private Size size;
 
-  public Beverage(String description, double baseCost, Size size) {
-    this.description = description;
-    this.baseCost = baseCost;
+  public Beverage(String name, double baseCost, Size size) {
+    this.name = name;
+    this.baseCost = Math.round(baseCost * 100.0) / 100.0;
     this.size = size;
-  }
-  
-  public String getDescription() {
-    return description;
-  }
-
-  public double getBaseCost() {
-    return baseCost;
-  }
-
-  public Size size() {
-    return size;
   }
 
   public double cost() {
@@ -43,5 +31,22 @@ public abstract class Beverage {
     totalCost = Math.round(totalCost * 100.0) / 100.0;
 
     return totalCost;
+  }
+
+  public String getCalcString() {
+    // TODO: implement this to make a string that looks like the calculation thing on project description 
+    return "placeholder base beverage text";
+  }
+
+  public String getName() {
+    return name;
+  }
+
+  public double getBaseCost() {
+    return baseCost;
+  }
+
+  public Size getSize() {
+    return size;
   }
 }
