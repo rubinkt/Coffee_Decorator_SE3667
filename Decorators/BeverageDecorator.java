@@ -37,7 +37,7 @@ public abstract class BeverageDecorator extends Beverage {
         }
         sizeAdjustedCost = Math.round(sizeAdjustedCost * 100.0) / 100.0;
 
-        return beverage.cost() + sizeAdjustedCost;
+        return Math.round((beverage.cost() + sizeAdjustedCost) * 100.0) / 100.0;
     }
 
     public Beverage getBeverage() {
