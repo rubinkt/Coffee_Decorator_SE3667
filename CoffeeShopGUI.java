@@ -38,7 +38,7 @@ public class CoffeeShopGUI extends JFrame
         leftPanel.setBorder(BorderFactory.createTitledBorder("Base & Size"));
         baseBox = new JComboBox<>(new String[]{"Select Base", "Espresso", "House Blend", "Dark Roast", "Decaf"});
         baseBox.addActionListener(e -> updateOrder());
-        sizeBox = new JComboBox<>(new String[]{"Small", "Medium", "Large"});
+        sizeBox = new JComboBox<>(new String[]{"Select Size", "Small", "Medium", "Large"});
         sizeBox.addActionListener(e -> updateOrder());
         leftPanel.add(new JLabel("Base:"));
         leftPanel.add(baseBox);
@@ -84,6 +84,18 @@ public class CoffeeShopGUI extends JFrame
         String base = (String) baseBox.getSelectedItem();
         String sizeString = (String) sizeBox.getSelectedItem();
         Size size = Size.SMALL;
+
+        if (base == null || base.equals("Select Base")) 
+        {
+            summaryArea.setText("Please select a base coffee.");
+            return;
+        }
+
+        if (sizeString == "null" || sizeString.equals("Select Size")) {
+            summaryArea.setText("Please select a size.");
+            return;
+        }
+
         switch (sizeString) {
             case "Small":
                 break;
@@ -93,12 +105,6 @@ public class CoffeeShopGUI extends JFrame
             case "Large":
                 size = Size.LARGE;
                 break;
-        }
-
-        if (base == null || base.equals("Select Base")) 
-        {
-            summaryArea.setText("Please select a base coffee.");
-            return;
         }
 
         switch(base) 
