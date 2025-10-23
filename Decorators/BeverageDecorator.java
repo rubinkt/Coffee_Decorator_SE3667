@@ -30,7 +30,7 @@ public abstract class BeverageDecorator extends Beverage {
             multiplier = 1.4;
             break;
         }
-        String line = String.format("%1$-16s $%2$-6.2f X %3$-6.2f = $%4$-7.2f", componentName, addedCost, multiplier, componentCost());
+        String line = String.format("%1$-16s $%2$-6.2f X %3$-6.1f = $%4$-7.2f", componentName, addedCost, multiplier, componentCost());
         return beverage.getCalcString() + "\n" + line;
     }
 

@@ -1,4 +1,4 @@
-import javax.swing.*;
+// import javax.swing.*;
 
 import Beverages.Beverage;
 import Beverages.Beverage.Size;
@@ -15,6 +15,19 @@ import Decorators.Whip;
 
 import java.awt.*;
 
+import javax.swing.BorderFactory;
+import javax.swing.BoxLayout;
+import javax.swing.JButton;
+import javax.swing.JCheckBox;
+import javax.swing.JComboBox;
+import javax.swing.JFrame;
+import javax.swing.JLabel;
+import javax.swing.JOptionPane;
+import javax.swing.JPanel;
+import javax.swing.JScrollPane;
+import javax.swing.JTextArea;
+import javax.swing.SwingUtilities;
+
 /**
  * Coffee Shop GUI demonstrating Decorator Pattern.
  */
@@ -29,13 +42,14 @@ public class CoffeeShopGUI extends JFrame
 
     public CoffeeShopGUI() {
         setTitle("Coffee Shop Decorator GUI");
-        setSize(600, 400);
+        setSize(1280, 800);
         setDefaultCloseOperation(EXIT_ON_CLOSE);
-        setLayout(new BorderLayout(10, 10));
+        setLayout(new BoxLayout(getContentPane(), BoxLayout.X_AXIS));
 
         // Left panel: Base & Size
         JPanel leftPanel = new JPanel(new GridLayout(4, 1, 5, 5));
         leftPanel.setBorder(BorderFactory.createTitledBorder("Base & Size"));
+        leftPanel.setPreferredSize(new Dimension(250, 800));
         baseBox = new JComboBox<>(new String[]{"Select Base", "Espresso", "House Blend", "Dark Roast", "Decaf"});
         baseBox.addActionListener(e -> updateOrder());
         sizeBox = new JComboBox<>(new String[]{"Select Size", "Small", "Medium", "Large"});
@@ -48,6 +62,7 @@ public class CoffeeShopGUI extends JFrame
         // Middle panel: Condiments
         JPanel middlePanel = new JPanel(new GridLayout(6, 1, 5, 5));
         middlePanel.setBorder(BorderFactory.createTitledBorder("Condiments"));
+        middlePanel.setPreferredSize(new Dimension(250, 800));
         String[] condNames = {"Milk", "Mocha", "Sugar", "Whip", "Caramel", "Vanilla"};
         condiments = new JCheckBox[condNames.length];
         for (int i = 0; i < condNames.length; i++) 
@@ -74,9 +89,9 @@ public class CoffeeShopGUI extends JFrame
         buttonPanel.add(checkoutBtn);
         rightPanel.add(buttonPanel, BorderLayout.SOUTH);
 
-        add(leftPanel, BorderLayout.WEST);
-        add(middlePanel, BorderLayout.CENTER);
-        add(rightPanel, BorderLayout.EAST);
+        add(leftPanel);
+        add(middlePanel);
+        add(rightPanel);
     }
 
     private void updateOrder() 
@@ -137,7 +152,7 @@ public class CoffeeShopGUI extends JFrame
             bar += "_";
         }
         summaryArea.append(bar + "\n");
-        summaryArea.append(String.format("%1$-16s $%2$-6.2f", "Total", currentBeverage.cost()));
+        summaryArea.append(String.format("%1$-35s $%2$-6.2f", "Total", currentBeverage.cost()));
     }
 
     private void clearOrder() 
