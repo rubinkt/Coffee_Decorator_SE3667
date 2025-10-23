@@ -20,6 +20,7 @@ import java.awt.*;
  */
 public class CoffeeShopGUI extends JFrame 
 {
+    private static final Font courier = new Font("Courier", Font.PLAIN, 18);
     private JComboBox<String> baseBox, sizeBox;
     private JCheckBox[] condiments;
     private JTextArea summaryArea;
@@ -61,6 +62,7 @@ public class CoffeeShopGUI extends JFrame
         rightPanel.setBorder(BorderFactory.createTitledBorder("Your Coffee"));
         summaryArea = new JTextArea(10, 25);
         summaryArea.setEditable(false);
+        summaryArea.setFont(courier);
         rightPanel.add(new JScrollPane(summaryArea), BorderLayout.CENTER);
 
         JPanel buttonPanel = new JPanel();
