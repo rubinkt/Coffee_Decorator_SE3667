@@ -1,5 +1,3 @@
-// import javax.swing.*;
-
 import Beverages.Beverage;
 import Beverages.Beverage.Size;
 import Beverages.DarkRoast;
@@ -37,7 +35,7 @@ public class CoffeeShopGUI extends JFrame
     private JComboBox<String> baseBox, sizeBox;
     private JCheckBox[] condiments;
     private JTextArea summaryArea;
-    private JButton clearBtn, checkoutBtn;
+    private JButton clearBtn, checkoutBtn, helpBtn;
     private Beverage currentBeverage;
 
     public CoffeeShopGUI() {
@@ -85,8 +83,21 @@ public class CoffeeShopGUI extends JFrame
         clearBtn.addActionListener(e -> clearOrder());
         checkoutBtn = new JButton("Checkout");
         checkoutBtn.addActionListener(e -> checkout());
+        helpBtn = new JButton("Help");
+        helpBtn.addActionListener(e -> {
+          JOptionPane.showMessageDialog(this,
+            "\tThe decorator pattern uses a combination of inheritance and composition to allow for classes which are the same overall type\n" + 
+            "as their parents and contain the same methods and also provide additional functionality to the objects contained within, “decorating”\n" +
+            "them with new functionality.\n" + //
+            "\tIn this program, the Beverage abstract class is extended by concrete beverages, which act as base beverages (e.g. Espresso, Dark Roast).\n" +
+            "The BeverageDecorator abstract class is a subclass of Beverage. It also contains a beverage as a field. Instances of beverage decorators\n" + 
+            "contain methods which call the same method for the interior beverage that it’s decorating and then perform additional actions that the\n" + 
+            "decorator itself uniquely provides.\n"
+          );
+        });
         buttonPanel.add(clearBtn);
         buttonPanel.add(checkoutBtn);
+        buttonPanel.add(helpBtn);
         rightPanel.add(buttonPanel, BorderLayout.SOUTH);
 
         add(leftPanel);
