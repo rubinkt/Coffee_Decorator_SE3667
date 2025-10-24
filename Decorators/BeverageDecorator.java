@@ -4,8 +4,11 @@ import Beverages.Beverage;
 
 import java.lang.Math;
 
+/** Implementation of a decorator for beverages to add condiments. */
 public abstract class BeverageDecorator extends Beverage {
+    /** The beverage being decorated */
     private Beverage beverage;
+    /** The human-readable name of the decoration */
     private String componentName;
     private double addedCost;
 
@@ -34,7 +37,10 @@ public abstract class BeverageDecorator extends Beverage {
         return beverage.getCalcString() + "\n" + line;
     }
 
-
+    /** Returns the cost of the individual condiment.
+     * 
+     * @return The cost of the condiment, rounded to 2 decimal places.
+     */
     public double componentCost() {
         double sizeAdjustedCost = addedCost;
         switch (beverage.getSize()) {
