@@ -2,10 +2,14 @@ package Beverages;
 
 import java.lang.Math;
 
+/** Abstract class containing common behaviors among beverages. */
 public abstract class Beverage {
+  /** Lists the sizes tht a beverage can have */
   public static enum Size {SMALL, MEDIUM, LARGE}
 
+  /** Text that shows the human-readable name of the beverage */
   private String name;
+  /** Cost of the beverage before size is taken into account */
   private double baseCost;
   private Size size;
 
@@ -15,6 +19,10 @@ public abstract class Beverage {
     this.size = size;
   }
 
+  /** Calculates the cost of the beverage.
+   * 
+   * @return the cost of the beverage, adjusted for size, rounded to two decimal points.
+   */
   public double cost() {
     double totalCost = baseCost;
     switch (size) {
@@ -33,6 +41,10 @@ public abstract class Beverage {
     return totalCost;
   }
 
+  /** Returns a representation of the cost for calculation.
+   * 
+   * @return A string representing the calculation of the cost of the beverage, fixed to 41 characters long.
+   */
   public String getCalcString() {
     double multiplier = 1.0;
     switch (size) {

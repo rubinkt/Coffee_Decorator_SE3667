@@ -32,6 +32,7 @@ import javax.swing.SwingUtilities;
 public class CoffeeShopGUI extends JFrame 
 {
     private static final Font courier = new Font("Courier", Font.PLAIN, 18);
+    
     private JComboBox<String> baseBox, sizeBox;
     private JCheckBox[] condiments;
     private JTextArea summaryArea;
@@ -105,6 +106,7 @@ public class CoffeeShopGUI extends JFrame
         add(rightPanel);
     }
 
+    /** Updates the part of the UI which shows the subtotal and cost calculation. */
     private void updateOrder() 
     {
         String base = (String) baseBox.getSelectedItem();
@@ -166,6 +168,7 @@ public class CoffeeShopGUI extends JFrame
         summaryArea.append(String.format("%1$-35s $%2$-6.2f", "Total", currentBeverage.cost()));
     }
 
+    /** Resets the order to the default state. */
     private void clearOrder() 
     {
         baseBox.setSelectedIndex(0);
