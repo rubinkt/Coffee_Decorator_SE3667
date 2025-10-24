@@ -184,6 +184,10 @@ public class CoffeeShopGUI extends JFrame
             JOptionPane.showMessageDialog(this, "Please select a base coffee before checkout.");
             return;
         }
+        if (sizeBox.getSelectedIndex() == 0)
+        {
+          JOptionPane.showMessageDialog(this, "Please select a size before checkout.");
+        }
         JOptionPane.showMessageDialog(this, "Order placed successfully!");
         clearOrder();
     }
