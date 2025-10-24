@@ -159,7 +159,8 @@ public class CoffeeShopGUI extends JFrame
             }
         }
 
-        summaryArea.setText(currentBeverage.getName() + ":\n\n" + currentBeverage.getCalcString() + "\n");
+        summaryArea.setText(currentBeverage.getSize().toString().charAt(0) + currentBeverage.getSize().toString().substring(1).toLowerCase() + " ");
+        summaryArea.append(currentBeverage.getName() + ":\n\n" + currentBeverage.getCalcString() + "\n");
         String bar = "";
         for (int n = 1; n <= 42; n++) {
             bar += "_";
