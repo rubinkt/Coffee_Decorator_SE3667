@@ -166,7 +166,9 @@ public class CoffeeShopGUI extends JFrame
             bar += "_";
         }
         summaryArea.append(bar + "\n");
-        summaryArea.append(String.format("%1$-35s $%2$-6.2f", "Total", currentBeverage.cost()));
+        summaryArea.append(String.format("%1$-16s $%2$-6.2f X %3$-6.3f = $%4$-7.2f", "Tax", currentBeverage.cost(), 0.0625, currentBeverage.cost() * 0.0625) + "\n");
+        summaryArea.append(bar + "\n");
+        summaryArea.append(String.format("%1$-35s $%2$-6.2f", "Total", currentBeverage.cost() * 1.0625));
     }
 
     /** Resets the order to the default state. */
